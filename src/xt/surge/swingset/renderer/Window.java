@@ -15,7 +15,7 @@ public class Window {
         }
 
         frame.setSize(width, height);
-        //frame.setIconImage(null); //TODO: Swingset icon
+        //frame.setIconImage(null); //TODO: Swingset icon, or game icon
 
         frame.setLocationRelativeTo(null);
 
@@ -30,6 +30,7 @@ public class Window {
         frame.setVisible(true);
 
         //Start the render loop
+        //Start audio machine
 
     }
 

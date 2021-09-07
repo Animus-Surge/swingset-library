@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<scene name="TestScene" version="1.0">
+    <resources>
+        <!--
+            The resources tree defines any and all resources used by the scene, including images, scripts, audio, etc.
+
+            When using the scene utility, by default all resources are res#, but this is not required as long as you load the correct resource from the list.
+
+            Resource nodes are required to have the following parameters:
+                id - The ID of the resource, used when loading from this list (Resources can be loaded directly from the node, bypassing this check altogether)
+                type - Defines how this resource should be loaded and where to place it
+                resourcepath - Defines where this resource is physically stored
+            
+            There are no optional parameters for the resource node.
+        -->
+        <resource id="res1" type="texture" resourcepath="res/resources/texture1.png" />
+
+    </resources>
+    <node class="Node"> <!--Root node is always the first node child in the scene. Children are children of the node.-->
+        <node class="Sprite" positionX="80" positionY="80" texture="resource:res1">
+    </node>
+</scene>
+
+<!--Documentation will be created for the game engine as well to ease the task of figuring it out on your own when
+manuallly making scenes-->
