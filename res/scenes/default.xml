@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<scene name="Default">
+    <resources></resource>
+    <node type="Rectangle" color="#000000" aspect="screen" />
+</scene>
