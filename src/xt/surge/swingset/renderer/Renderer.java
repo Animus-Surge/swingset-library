@@ -2,7 +2,7 @@ package xt.surge.swingset.renderer;
 
 import javax.swing.JPanel;
 
-import java.awt.Graphics;
+import java.awt.*;
 
 public class Renderer extends JPanel {
 
@@ -10,12 +10,13 @@ public class Renderer extends JPanel {
     
     public Renderer() {
         //Load default scene
-        
+
     }
 
     @Override
-    public void paintComponents(Graphics g) {
-
+    public void paintComponent(Graphics g) {
+        g.setColor(Color.black);
+        g.fillRect(0, 0, 800, 600);
     }
 
 }

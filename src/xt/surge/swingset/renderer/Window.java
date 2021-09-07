@@ -13,7 +13,7 @@ public class Window {
         if(maximized) {
             frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         }
-
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(width, height);
         //frame.setIconImage(null); //TODO: Swingset icon, or game icon
 
@@ -21,11 +21,9 @@ public class Window {
 
         renderPanel = new Renderer();
         renderPanel.setSize(width, height);
-        renderPanel.setMinimumSize(new Dimension(width, height));
 
         frame.add(renderPanel);
-        frame.setContentPane(renderPanel);
-        frame.pack();
+        //frame.pack();
 
         frame.setVisible(true);
 
