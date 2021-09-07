@@ -1,17 +1,23 @@
 package xt.surge.swingset.components;
 
+import xt.surge.swingset.util.Transform;
+
+import java.awt.Point;
+
 public class Node2D extends Node {
-    
-    public float x, y;
+
+    protected Transform transform;
 
     public Node2D() {
-        x = 0;
-        y = 0;
+        this.transform = new Transform();
     }
 
     public Node2D(float x, float y) {
-        this.x = x;
-        this.y = y;
+        this.transform = new Transform(x, y);
+    }
+
+    public Point getPosition() {
+        return null;
     }
 
 }

@@ -1,6 +1,6 @@
-package xt.surge.swingset.components.canvas;
+package xt.surge.swingset.components;
 
-import xt.surge.swingset.components.Node2D;
+import java.awt.Dimension;
 
 /**
  * A rectangle is a basic shape that will be used for collisions and rendering.
@@ -21,6 +21,8 @@ public class Rectangle extends Node2D {
         this.height = height;
     }
 
-    
+    public Dimension getSize() {
+        return null;
+    }
     
 }
