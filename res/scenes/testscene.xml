@@ -18,6 +18,7 @@
     </resources>
     <node class="Node"> <!--Root node is always the first node child in the scene. Children are children of the node.-->
         <node class="Sprite" positionX="80" positionY="80" texture="resource:res1">
+        <node class="Sprite" positionX="130" positionY="80" texture="resource:res1">
     </node>
 </scene>
 
