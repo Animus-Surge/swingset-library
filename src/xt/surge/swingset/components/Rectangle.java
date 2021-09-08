@@ -3,7 +3,13 @@ package xt.surge.swingset.components;
 import java.awt.Dimension;
 
 /**
- * A rectangle is a basic shape that will be used for collisions and rendering.
+ * A rectangle is a basic shape that can be used for collisions. By default, this class
+ * contains no render functionality. To use render functionality, you should use the
+ * {@link xt.surge.swingset.components.canvas.RectColor} or {@link xt.surge.swingset.components.canvas.Sprite}
+ * class instead.
+ * 
+ * @author Surge
+ * @version 1.0
  */
 public class Rectangle extends Node2D {
 

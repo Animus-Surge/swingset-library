@@ -1,6 +1,13 @@
 /out 
+/docs
 
 *.class
 *.jar
 *.log
-*.bat
+
+# The following file is a file that I use to back up the project easier and to
+# streamline the process. This is simply a quality of life thing.
+backup.bat
+# The following file is a file that I use to modify the PATH variable
+# to allow me to work with the jdk.
+setpath.bat

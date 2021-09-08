@@ -6,6 +6,8 @@ import xt.surge.swingset.components.Node;
  * The SceneLoader class handles all loading of scene (*.swsc or files in xml format) files for use in the game. Scene files
  * use XML (Extensible Markup Language) to define all scene nodes and resources used. 
  * 
+ * <strong>NOTE</strong>: currently unimplemented
+ * 
  * @author Surge
  * @version 1.0
  */
