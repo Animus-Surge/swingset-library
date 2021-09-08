@@ -2,6 +2,8 @@ package xt.surge.swingset;
 
 import xt.surge.swingset.renderer.Window;
 
+import static xt.surge.swingset.util.Constants.*;
+
 /**
  * This is a tester class used in testing the engine. This is not designed
  * to be included in release versions.
@@ -11,10 +13,12 @@ import xt.surge.swingset.renderer.Window;
  */
 public class Main {
 
-    public static final int VERSION_MAJOR = 0; //TODO: define these values in a constants class
-    public static final int VERSION_MINOR = 1;
-    public static final int VERSION_PATCH = 0;
-
+    
+	/**
+	 * Main method. Nothing major here.
+	 * 
+	 * @param args Command line arguments
+	 */
     public static void main(String[] args) {
 
         System.out.println("Swingset V" + VERSION_MAJOR + "." + VERSION_MINOR + "." + VERSION_PATCH);

@@ -1,5 +1,104 @@
-body {
-    background-color:#700a0a;
+:root {
+    --color-1: #F6F5AE;
+    --color-2: #848FA5;
+    --color-3: #34344A;
+    --color-4: #BAABBD;
+    --color-5: #EAF9D9;
+    --color-6: #202C39;
+    --color-7: #283845;
+    --color-8: #353A47;
+    --color-9: #2B4141;
+
+    --color-activenav: #052F5F;
+    --color-hovernav: #114b5f;
 }
 
-/*TODO: fonts and section classes, maybe bootstrap but we'll see*/
+body {
+    background-color:var(--color-8);
+    margin:0;
+    color:white;
+    font-family:sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    padding: 0;
+}
+
+/*Navbar*/
+
+div.topnav ul.navstruct {
+    padding:0;
+    margin:0;
+    overflow:hidden;
+    list-style-type: none;
+    background-color:var(--color-7);
+}
+
+li.navelement a.navlink {
+    padding:12px 10px;
+    background-color:var(--color-7);
+    color:var(--color-2);
+    display:block;
+    float:left;
+    text-decoration: none;
+}
+
+li.navelement.active {
+    padding:12px 10px;
+    background-color:var(--color-activenav);
+    color:var(--color-2);
+    display:block;
+    float:left;
+}
+
+li.navelement a.navlink:hover {
+    background-color:var(--color-hovernav);
+}
+
+/*Content*/
+
+div.content {
+    display: flex;
+    flex-direction:column;
+}
+
+.section {
+    background-color: var(--color-4);
+    text-align:center;
+    padding:20px;
+    min-height: 300px;  
+}
+
+.section-header {
+    padding:80px;
+    background-color: var(--color-2);
+    color:var(--color-9);
+    text-align:center;
+    height: 200px;
+}
+
+.header {
+    color: #1d3461;
+}
+
+/*News panel*/
+
+.newstable {
+    border: 1px solid var(--color-6);
+    padding: 3px;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-around;
+    overflow-y:auto;
+    height: 200px;
+    width: 99.5%;
+}
+
+.newsentry {
+    border: 1px solid var(--color-7);
+    margin: 3px;
+    height:50px;
+    width:500px;
+    overflow:hidden;
+}
