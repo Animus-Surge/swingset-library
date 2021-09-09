@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Created-By: Surge, 14.0.2_JDK (Oracle Corporation)
+Main-Class: xt.surge.swingset.Main 
+
