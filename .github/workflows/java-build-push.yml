@@ -14,4 +14,4 @@ jobs:
       - name: Compile java files
         run: cd src && javac -d ../out xt/surge/swingset/Main.java
       - name: Create JAR file
-        run: cd ../out && jar -cmvf ../manifest.txt swingset-bleeding-edge.jar ../res xt
+        run: cd out && jar -cmvf ../manifest.txt swingset-bleeding-edge.jar ../res xt
