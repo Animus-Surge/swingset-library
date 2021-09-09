@@ -1,3 +1,5 @@
+[![Firebase host update on push](https://github.com/Animus-Surge/swingset-library/actions/workflows/firebase-hosting-merge.yml/badge.svg)](https://github.com/Animus-Surge/swingset-library/actions/workflows/firebase-hosting-merge.yml)
+
 # Swingset
 
 Swingset is a 2D java game library using the default swing and awt packages to render everything.
