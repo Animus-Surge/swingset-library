@@ -1,4 +1,4 @@
-[![Firebase host update on push](https://github.com/Animus-Surge/swingset-library/actions/workflows/firebase-hosting-merge.yml/badge.svg)](https://github.com/Animus-Surge/swingset-library/actions/workflows/firebase-hosting-merge.yml)
+[![Firebase host update on push](https://github.com/Animus-Surge/swingset-library/actions/workflows/firebase-hosting-merge.yml/badge.svg)](https://github.com/Animus-Surge/swingset-library/actions/workflows/firebase-hosting-merge.yml) [![Bleeding edge build](https://github.com/Animus-Surge/swingset-library/actions/workflows/java-build-push.yml/badge.svg)](https://github.com/Animus-Surge/swingset-library/actions/workflows/java-build-push.yml)
 
 # Swingset
 

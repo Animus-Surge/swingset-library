@@ -12,6 +12,6 @@ jobs:
           java-version: '14'
           distribution: 'adopt'
       - name: Compile java files
-        run: cd src && javac -o ../out xt/surge/swingset/Main.java
+        run: cd src && javac -d ../out xt/surge/swingset/Main.java
       - name: Create JAR file
         run: cd ../out && jar -cmvf ../manifest.txt swingset-bleeding-edge.jar ../res xt
