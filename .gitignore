@@ -1,6 +1,7 @@
 /out 
 /docs
 /.gradle
+/.vscode
 
 *.class
 *.jar
