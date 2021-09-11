@@ -1,5 +1,7 @@
 package xt.surge.swingset.components;
 
+import org.w3c.dom.Element;
+
 import xt.surge.swingset.structs.Transform;
 
 /**
@@ -46,6 +48,33 @@ public class Node2D extends Node {
 	public Node2D(float x, float y, String name) {
 		this.transform = new Transform(x, y);
 		this.nodeName = name;
+	}
+
+	public void setX(int x) {
+		this.transform.x = x;
+	}
+
+	public void setY(int y) {
+		this.transform.y = y;
+	}
+
+	/**
+	 * Creates a Node2D from an XML element.
+	 * 
+	 * @param elem The element to generate the Node2D from
+	 */
+	public static Node2D fromElement(Element elem) {
+		Node2D n = new Node2D();
+
+		String name = elem.getAttribute("name");
+		String posX = elem.getAttribute("x");
+		String posY = elem.getAttribute("posy");
+
+		if(!name.isEmpty()) n.setName(name);
+		if(!posX.isEmpty()) n.setX(Integer.parseInt(posX));
+		if(!posY.isEmpty()) n.setY(Integer.parseInt(posY));
+
+		return n;
 	}
 
 }

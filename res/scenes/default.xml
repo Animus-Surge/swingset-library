@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
 <scene name="Default">
     <resources></resource>
-    <node type="RectColor" color="#000000" aspect="screen" />
+    <node class="RectColor" color="#000000" aspect="screen" />
 </scene>

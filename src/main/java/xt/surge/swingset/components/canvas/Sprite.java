@@ -1,9 +1,9 @@
 package xt.surge.swingset.components.canvas;
 
+import java.awt.Graphics;
+
 import xt.surge.swingset.components.Node2D;
 import xt.surge.swingset.structs.Texture;
-
-import java.awt.Graphics;
 
 /**
  * A Sprite is a render object that renders a texture. Sprites are useful in the sense that you

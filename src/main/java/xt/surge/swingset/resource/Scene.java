@@ -1,8 +1,8 @@
 package xt.surge.swingset.resource;
 
-import xt.surge.swingset.components.Node;
-
 import java.awt.Graphics;
+
+import xt.surge.swingset.components.Node;
 
 /**
  * A scene is a group of nodes that collectively form a part of a game. For example,

@@ -1,5 +1,6 @@
 /out 
 /docs
+/.gradle
 
 *.class
 *.jar
@@ -11,3 +12,8 @@ backup.bat
 # The following file is a file that I use to modify the PATH variable
 # to allow me to work with the jdk.
 setpath.bat
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build

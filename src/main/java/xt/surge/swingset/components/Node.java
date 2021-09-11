@@ -3,6 +3,8 @@ package xt.surge.swingset.components;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
+import org.w3c.dom.Element;
+
 import xt.surge.swingset.intfs.Renderable;
 
 /**
@@ -86,6 +88,15 @@ public class Node implements Renderable {
     @Override
     public void render(Graphics g, int xoffset, int yoffset) {
         children.forEach(child -> child.render(g, xoffset, yoffset));
+    }
+
+    public static Node fromElement(Element elem) {
+        Node n = new Node();
+
+        String name = elem.getAttribute("name");
+        if(!name.isEmpty()) n.setName(name);
+
+        return n;
     }
 
 }
