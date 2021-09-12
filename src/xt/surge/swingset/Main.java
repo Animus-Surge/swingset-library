@@ -26,7 +26,7 @@ public class Main {
 		Window window = new Window();
 
 		Scene scene = SceneLoader.loadScene("../res/scenes/testscene.xml");
-		
+		 	
 		window.init("Swingset Engine | testScene", 800, 600, false, scene);
     }
 

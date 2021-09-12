@@ -1,4 +1,4 @@
-[![Firebase host update on push](https://github.com/Animus-Surge/swingset-library/actions/workflows/firebase-hosting-merge.yml/badge.svg)](https://github.com/Animus-Surge/swingset-library/actions/workflows/firebase-hosting-merge.yml) [![Bleeding edge build](https://github.com/Animus-Surge/swingset-library/actions/workflows/java-build-push.yml/badge.svg)](https://github.com/Animus-Surge/swingset-library/actions/workflows/java-build-push.yml)
+[![Firebase host update on push](https://github.com/Animus-Surge/swingset-library/actions/workflows/firebase-hosting-merge.yml/badge.svg)](https://github.com/Animus-Surge/swingset-library/actions/workflows/firebase-hosting-merge.yml)
 
 # Swingset
 
@@ -20,14 +20,11 @@ list that outlines what we have planned.
 
 # How to use
 
-Currently, there isn't much use for this engine. If you'd like to see what there is so far,
-feel free to run the `compile.bat`/`compile.sh` scripts, followed by the `run.bat`/`run.sh`
-scripts to run the current test system.
+
 
 # Documentation
 
-See the wiki for the documentation. Additionally, the program contains information for
-javadocs, which can be built by running the `buildjdocs.bat` or `buildjdocs.sh` files.
+See the wiki for the documentation.
 
 Please note that running any of the scripts provided assumes that you have at least jdk 14
-on your PATH variable. If you don't have it, you can get it at [https://java.oracle.com/].
+on your PATH variable. If you don't have it, you can get it at https://java.oracle.com/.
