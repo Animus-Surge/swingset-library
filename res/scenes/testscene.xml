@@ -16,13 +16,13 @@
         <resource id="res1" type="texture" resourcepath="res/textures/texture1.png" />
 
     </resources>
-    <node class="Node"> <!--Root node is always the first node child in the scene. Children are children of the node.-->
-        <node class="RectColor" x="30" y="30" width="100" height="100" r="255" g="0" b="0" a="0">
-            <node class="RectColor" x="30" y="30" width="100" height="100" r="255" g="127" b="0" a="0">
-                <node class="RectColor" x="30" y="30" width="100" height="100" r="255" g="255" b="0" a="0">
-                    <node class="RectColor" x="30" y="30" width="100" height="100" r="0" g="255" b="0" a="0">
-                        <node class="RectColor" x="30" y="30" width="100" height="100" r="0" g="0" b="255" a="0">
-                            <node class="RectColor" x="30" y="30" width="100" height="100" r="127" g="0" b="255" a="0">
+    <node class="Node2D"> <!--Root node is always the first node child in the scene. Children are children of the node.-->
+        <node name="red" class="RectColor" x="30" y="30" width="100" height="100" r="255" g="0" b="0" a="0">
+            <node name="orange" class="RectColor" x="30" y="30" width="100" height="100" r="255" g="127" b="0" a="0">
+                <node name="yellow" class="RectColor" x="30" y="30" width="100" height="100" r="255" g="255" b="0" a="0">
+                    <node name="green" class="RectColor" x="30" y="30" width="100" height="100" r="0" g="255" b="0" a="0">
+                        <node name="blue" class="RectColor" x="30" y="30" width="100" height="100" r="0" g="0" b="255" a="0">
+                            <node name="purple" class="RectColor" x="30" y="30" width="100" height="100" r="127" g="0" b="255" a="0">
 
                             </node>
                         </node>

@@ -6,9 +6,7 @@ import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
+import org.w3c.dom.*;
 
 import xt.surge.swingset.components.*;
 import xt.surge.swingset.components.canvas.*;
@@ -36,75 +34,103 @@ public class SceneLoader {
      * @return The node tree of the scene
      */
     public static Scene loadScene(String path) {
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try {
-            factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+            DocumentBuilderFactory fact = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = fact.newDocumentBuilder();
+            Document sceneDoc = builder.parse(new File(path));
 
-            DocumentBuilder docbuilder = factory.newDocumentBuilder();
-            Document doc = docbuilder.parse(new File(path));
+            Element sceneroot = sceneDoc.getDocumentElement();
+            if(sceneroot.getNodeName().equals("scene")) {
+                Constants.RESLGR.log("Scene file detected!", Logger.DEBUG);
+                Constants.RESLGR.log(sceneroot.getNodeValue());
+                Constants.RESLGR.log(sceneroot.getNodeName());
+                Constants.RESLGR.log(String.valueOf(sceneroot.getChildNodes().getLength()));
+                xt.surge.swingset.components.Node root = new xt.surge.swingset.components.Node();
+                for(int i = 0; i < sceneroot.getChildNodes().getLength(); i++) {
+                    org.w3c.dom.Node node = sceneroot.getChildNodes().item(i);
 
-            Node rootNode;
+                    Constants.RESLGR.log(String.valueOf(node.getNodeType()) + " " + node.getNodeName());
+                    if(node.getNodeName().equals("resources") && node.getNodeType() == 1) {
+                        loadResources((Element)node);
+                    }
+                    else if (node.getNodeName().equals("node") && node.getNodeType() == 1) {
+                        Element elem = (Element) node;
+                        root = new xt.surge.swingset.components.Node();
+                        switch(elem.getAttribute("class")) {
+                            case "Node":
+                                root = xt.surge.swingset.components.Node.fromElement(elem);
+                                break;
+                            case "Node2D":
+                                root = Node2D.fromElement(elem);
+                                break;
+                            case "Rectangle":
+                                root = Rectangle.fromElement(elem);
+                                break;
+                            case "RectColor":
+                                root = RectColor.fromElement(elem);
+                                break;
+                            case "Sprite":
+                                root = Sprite.fromElement(elem);
+                                break;
+                            case "PhysicsBody":
+                                break;
+                            case "UIElement":
+                                break;
+                            
+                            default:
+                                break;
+                        }
+                        checkChildren(root, elem);
 
-            doc.getDocumentElement().normalize();
-            if(doc.getDocumentElement().getNodeName() == "scene") {
-
-                String sceneName = doc.getDocumentElement().getAttribute("name");
-
-                loadResources((Element)doc.getDocumentElement().getFirstChild());
-                Element root = (Element)doc.getDocumentElement().getLastChild();
-                
-                switch(root.getAttribute("class")) {
-                    case "Node": rootNode = Node.fromElement(root); break;
-                    case "Node2D": rootNode = Node2D.fromElement(root); break;
-                    case "Rectangle": rootNode = Rectangle.fromElement(root); break;
-                    case "RectColor": rootNode = RectColor.fromElement(root); break;
-                    //TODO: add more nodes
-                    default: rootNode = null; break;
+                        Constants.RESLGR.log("Created new scene with name: " + sceneroot.getAttribute("name"));
+                        return new Scene(sceneroot.getAttribute("name"), root);
+                    }
                 }
-
-                if(rootNode == null) return null;
-
-                checkChildren(rootNode, root);
-            } else {
-                Constants.RESLGR.log("Specified XML document: " + path + " does not contain a <scene> element.", Logger.ERROR);
             }
-        } catch(Exception e) {
+        } catch (Exception e) {
             Constants.RESLGR.logException(e, false, false);
         }
-
-        return null;
+        return null; //TODO: make it return the current scene of the game
     }
 
-    /**
-     * This function checks children of the specified element and adds them as child of root.
-     * 
-     * @param root The root node to add children to
-     * @param element The element to check for child nodes
-     */
-    public static void checkChildren(Node root, Element element) {
-        NodeList children = element.getChildNodes();
-
+    public static void checkChildren(xt.surge.swingset.components.Node root, Element elem) {
+        NodeList children = elem.getChildNodes();
         for(int i = 0; i < children.getLength(); i++) {
-            Element child = (Element)children.item(i);
-            String nodeClass = child.getAttribute("class");
-            if(nodeClass != "") {
-                Node cnode;
-                switch(nodeClass) {
-                    case "Node": cnode = Node.fromElement(child); break;
-                    case "Node2D": cnode = Node2D.fromElement(child); break;
-                    case "Rectangle": cnode = Rectangle.fromElement(child); break;
-                    case "RectColor": cnode = RectColor.fromElement(child); break;
-                    //TODO: add more nodes
-                    default: cnode = null; break;
-                }
-                if(cnode != null) root.addChild(cnode);
+            org.w3c.dom.Node child = children.item(i);
 
-                checkChildren(cnode, child); //Check the children of the child node for any other nodes
-            } else {
-                return;
+            if(child.getNodeName().equals("node") && child.getNodeType() == 1) {
+                Element e = (Element) child;
+                xt.surge.swingset.components.Node node = new xt.surge.swingset.components.Node();
+
+                switch(e.getAttribute("class")) {
+                    case "Node":
+                        node = xt.surge.swingset.components.Node.fromElement(e);
+                        break;
+                    case "Node2D":
+                        node = Node2D.fromElement(e);
+                        break;
+                    case "Rectangle":
+                        node = Rectangle.fromElement(e);
+                        break;
+                    case "RectColor":
+                        node = RectColor.fromElement(e);
+                        break;
+                    case "Sprite":
+                        node = Sprite.fromElement(e);
+                        break;
+                    case "PhysicsBody":
+                        break;
+                    case "UIElement":
+                        break;
+                    
+                    default:
+                        break;
+                }
+                checkChildren(node, e);
+                root.addChild(node);
             }
         }
-    }
+    }    
 
     public static void loadResources(Element resourcesRoot) {
         //TODO

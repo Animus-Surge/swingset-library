@@ -6,6 +6,8 @@
 
 echo Swingset buildscript v1.2
 
+set EC=0
+
 if not exist "java" (
     if not defined "%JAVA_HOME%" (
         echo [31;1mERROR[0m: No java path defined or java folder in project root directory.
@@ -37,12 +39,11 @@ if [%1]==[] (
 
 if "%1"=="list" (
     echo Possible targets:
-    echo compile, javadoc, dist, all, clean
+    echo compile, javadoc, dist, all, clean, run
     exit /B 0
 )
 
 ::Compile
-:compile
 
 if "%1"=="compile" (
     if not exist "%JPATH%/javac.exe" (
@@ -60,27 +61,76 @@ if "%1"=="compile" (
     )
 
     if defined "%BUILD_ALL%" goto all
-
-    echo [92;1mSUCCESS[0m: Build succeeded.
+    if defined "%COMP_AND_RUN%" goto comprun
     cd ..
-    exit /B 0
 )
 
 ::javadocs
-:javadoc
 
 if "%1"=="javadoc" (
     if not exist "%JPATH%/javadoc.exe" (
         echo [31;1mERROR[0m: javadoc.exe. JDK must not exist in java folder.
+        exit /B 1
     )
     
     echo Building javadocs...
 
-    javadoc
+    
 )
 
 ::distributable JAR file
-:dist
 
 ::all of them
-:all
+
+::run the application
+if "%1"=="run" (
+    ::Check if out folder exists
+    if not exist out (
+        echo [31;1mERROR[0m: out folder does not exist. Run build compile to be able to run the app.
+        exit /B 1
+    )
+
+    cd out
+    ..\%JPATH%\java.exe xt.surge.swingset.Main
+    if ERRORLEVEL 1 set EC=1
+    cd ..
+)
+
+::compile and run the application
+if "%1"=="comprun" (
+    if not exist "%JPATH%/javac.exe" (
+        echo [31;1mERROR[0m: javac.exe does not exist. JDK must not exist in java folder.
+        exit /B 1
+    )
+
+    echo Compiling sources...
+
+    cd src
+    ..\%JPATH%\javac.exe -d ../out xt/surge/swingset/Main.java
+    if ERRORLEVEL 1 (
+        echo [31;1mERROR[0m: javac failed. See above messages for more details.
+        exit /B 1
+    )
+
+    cd ..
+
+    if not exist out (
+        echo [31;1mERROR[0m: Compilation failed. See any additional log output for more information.
+        exit /B 1
+    )
+
+    cd out
+    ..\%JPATH%\java.exe xt.surge.swingset.Main
+    if ERRORLEVEL 1 set EC=1
+    cd ..
+)
+
+::clean
+
+if "%1"=="clean" (
+    echo Cleaning output files...
+    del /S out
+)
+
+if "%EC%"=="1" echo [31;1mERROR[0m: Build failed. See output above for more details. && exit /B 1
+echo [92;1mSUCCESS[0m: Build succeeded.

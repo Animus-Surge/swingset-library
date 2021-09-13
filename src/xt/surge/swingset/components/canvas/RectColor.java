@@ -55,8 +55,8 @@ public class RectColor extends Rectangle {
         String name = elem.getAttribute("name");
         String posX = elem.getAttribute("x");
         String posY = elem.getAttribute("y");
-        String sizeW = elem.getAttribute("w");
-        String sizeH = elem.getAttribute("h");
+        String sizeW = elem.getAttribute("width");
+        String sizeH = elem.getAttribute("height");
         String red = elem.getAttribute("r");
         String green = elem.getAttribute("g");
         String blue = elem.getAttribute("b");
@@ -64,7 +64,7 @@ public class RectColor extends Rectangle {
 
         if(!name.isEmpty()) n.setName(name);
         if(!posX.isEmpty()) n.setX(Integer.parseInt(posX));
-        if(!posY.isEmpty()) n.setX(Integer.parseInt(posY));
+        if(!posY.isEmpty()) n.setY(Integer.parseInt(posY));
         if(!sizeW.isEmpty()) n.setWidth(Integer.parseInt(sizeW));
         if(!sizeH.isEmpty()) n.setHeight(Integer.parseInt(sizeH));
 
