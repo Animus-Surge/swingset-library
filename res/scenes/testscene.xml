@@ -17,7 +17,9 @@
 
 	</resources>
 	<node class="RectColor" name="background" x="0" y="0" width="800" height="600" r="0" g="0" b="0" a="255"> <!--Root node is always the first node child in the scene. Children are children of the node.-->
-		<node class="Sprite" name="testImage" texture="../res/textures/tex1.png" sx="0.75" sy="0.75" x="10" y="10"> <!--TODO: resource implementation-->
+		<node class="Sprite" name="testImage" texture="../res/textures/tex1.png" sx="0.5" sy="0.5" x="20" y="20"> <!--TODO: resource implementation-->
+		</node>
+		<node class="RectColor" name="color" x="20" y="500" width="450" height="50" r="127" g="127" b="127" a="255">
 		</node>
 	</node>
 </scene>

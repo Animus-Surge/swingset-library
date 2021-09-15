@@ -1,14 +1,17 @@
 package xt.surge.swingset;
 
 import static xt.surge.swingset.util.Constants.*;
+import xt.surge.swingset.util.Constants;
 
 import xt.surge.swingset.renderer.Window;
 import xt.surge.swingset.resource.ImageLoader;
 import xt.surge.swingset.resource.Scene;
 import xt.surge.swingset.resource.SceneLoader;
+import xt.surge.swingset.scripting.Script;
 import xt.surge.swingset.structs.Texture;
 import xt.surge.swingset.components.canvas.RectColor;
 import xt.surge.swingset.components.canvas.Sprite;
+import xt.surge.swingset.components.Node;
 
 import java.awt.Color;
 /**
@@ -31,18 +34,20 @@ public class Main {
 
 		Window window = new Window();
 
-		Texture testTex = ImageLoader.loadImage("../res/textures/tex1.png");
+		Node node = new Node("root");
+		node.script = new Script(node) {
+			@Override
+			public void start() {
+				Constants.MAINLGR.log(node.nodeName);
+				Constants.MAINLGR.log("Hello from start method!");
+			}
+			@Override
+			public void update() {
 
-		RectColor bg = new RectColor(Color.black, 0, 0, 800, 600);
+			}
+		};
 
-		Sprite testSprite = new Sprite(30, 30, testTex);
-		testSprite.setScale(0.5f, 0.5f);
-
-		bg.addChild(testSprite);
-
-		Scene scene = SceneLoader.loadScene("../res/scenes/testscene.xml");
-
-		Scene testScene = new Scene("TestScene2", bg);
+		Scene scene = new Scene("testScene", node);
 		 	
 		window.init("Swingset Engine | testScene", 800, 600, false, scene);
     }

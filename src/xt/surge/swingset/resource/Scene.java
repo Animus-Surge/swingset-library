@@ -34,6 +34,7 @@ public class Scene {
     public Scene(String name, Node root) {
         this.name = name;
         this.rootNode = root;
+        root.onStart();
     }
 
     /**

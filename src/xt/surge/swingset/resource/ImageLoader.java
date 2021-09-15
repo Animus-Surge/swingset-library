@@ -28,7 +28,6 @@ public class ImageLoader {
     private static HashMap<String, Texture> cache = new HashMap<>();
 
     public static Texture loadImage(String path) {
-        Constants.RESLGR.log("Path: " + path + " In cache: " + String.valueOf(cache.containsKey(path)));
         if(cache.containsKey(path)) return cache.get(path);
         try {
             BufferedImage img = ImageIO.read(new File(path));

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import org.w3c.dom.Element;
 
 import xt.surge.swingset.intfs.Renderable;
+import xt.surge.swingset.scripting.Script;
 
 /**
  * The Node is the most basic component that is available to be used in scenes. By default, all
@@ -50,7 +51,7 @@ public class Node implements Renderable {
         this.nodeName = name;
     }
 
-    //TODO: scripts
+    public Script script;
 
     /**
      * Sets the name of the node
@@ -85,9 +86,17 @@ public class Node implements Renderable {
         });
     }
 
+    /**
+     * Gets called once the scene is loaded
+     */
+    public final void onStart() { 
+        script.start();
+    }
+
     @Override
     public void render(Graphics g, int xoffset, int yoffset) {
         children.forEach(child -> child.render(g, xoffset, yoffset));
+        script.update();
     }
 
     public static Node fromElement(Element elem) {
