@@ -3,6 +3,8 @@ package xt.surge.swingset.resource;
 import javax.imageio.ImageIO;
 
 import xt.surge.swingset.structs.Texture;
+import xt.surge.swingset.util.Constants;
+import xt.surge.swingset.util.Logger;
 
 import java.awt.image.BufferedImage;
 import java.io.*;
@@ -23,9 +25,10 @@ public class ImageLoader {
     
     //TODO: image caching
 
-    private static HashMap<String, Texture> cache;
+    private static HashMap<String, Texture> cache = new HashMap<>();
 
     public static Texture loadImage(String path) {
+        Constants.RESLGR.log("Path: " + path + " In cache: " + String.valueOf(cache.containsKey(path)));
         if(cache.containsKey(path)) return cache.get(path);
         try {
             BufferedImage img = ImageIO.read(new File(path));
@@ -33,9 +36,9 @@ public class ImageLoader {
             cache.put(path, tex);
             return tex;
         } catch(IOException e) {
-            e.printStackTrace();
+            Constants.RESLGR.logException(e, false, false);
+            Constants.RESLGR.log("Path: " + path, Logger.TRACE);
             return null;
         }
     }
-
 }

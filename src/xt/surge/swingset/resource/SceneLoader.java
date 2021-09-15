@@ -41,15 +41,10 @@ public class SceneLoader {
 
             Element sceneroot = sceneDoc.getDocumentElement();
             if(sceneroot.getNodeName().equals("scene")) {
-                Constants.RESLGR.log("Scene file detected!", Logger.DEBUG);
-                Constants.RESLGR.log(sceneroot.getNodeValue());
-                Constants.RESLGR.log(sceneroot.getNodeName());
-                Constants.RESLGR.log(String.valueOf(sceneroot.getChildNodes().getLength()));
                 xt.surge.swingset.components.Node root = new xt.surge.swingset.components.Node();
                 for(int i = 0; i < sceneroot.getChildNodes().getLength(); i++) {
                     org.w3c.dom.Node node = sceneroot.getChildNodes().item(i);
 
-                    Constants.RESLGR.log(String.valueOf(node.getNodeType()) + " " + node.getNodeName());
                     if(node.getNodeName().equals("resources") && node.getNodeType() == 1) {
                         loadResources((Element)node);
                     }
@@ -82,7 +77,6 @@ public class SceneLoader {
                         }
                         checkChildren(root, elem);
 
-                        Constants.RESLGR.log("Created new scene with name: " + sceneroot.getAttribute("name"));
                         return new Scene(sceneroot.getAttribute("name"), root);
                     }
                 }

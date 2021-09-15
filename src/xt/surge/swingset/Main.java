@@ -3,9 +3,12 @@ package xt.surge.swingset;
 import static xt.surge.swingset.util.Constants.*;
 
 import xt.surge.swingset.renderer.Window;
+import xt.surge.swingset.resource.ImageLoader;
 import xt.surge.swingset.resource.Scene;
 import xt.surge.swingset.resource.SceneLoader;
+import xt.surge.swingset.structs.Texture;
 import xt.surge.swingset.components.canvas.RectColor;
+import xt.surge.swingset.components.canvas.Sprite;
 
 import java.awt.Color;
 /**
@@ -28,27 +31,24 @@ public class Main {
 
 		Window window = new Window();
 
-		Scene scene = SceneLoader.loadScene("res/scenes/testscene.xml");
+		Texture testTex = ImageLoader.loadImage("../res/textures/tex1.png");
 
-		RectColor root = new RectColor(Color.black, 0, 0, 800, 600);
+		RectColor bg = new RectColor(Color.black, 0, 0, 800, 600);
 
-		RectColor rect1 = new RectColor(Color.red, 30, 30, 100, 100);
-		RectColor rect2 = new RectColor(Color.orange, 30, 30, 100, 100);
-		RectColor rect3 = new RectColor(Color.yellow, 30, 30, 100, 100);
-		RectColor rect4 = new RectColor(Color.green, 30, 30, 100, 100);
-		RectColor rect5 = new RectColor(Color.blue, 30, 30, 100, 100);
-		RectColor rect6 = new RectColor(Color.magenta, 30, 30, 100, 100);
+		Sprite testSprite = new Sprite(30, 30, testTex);
+		testSprite.setScale(0.5f, 0.5f);
 
-		rect1.addChild(rect2);
-		rect2.addChild(rect3);
-		rect3.addChild(rect4);
-		rect4.addChild(rect5);
-		rect5.addChild(rect6);
+		bg.addChild(testSprite);
 
-		root.addChild(rect1);
-		Scene trueScene = new Scene("scene", root);
+		Scene scene = SceneLoader.loadScene("../res/scenes/testscene.xml");
+
+		Scene testScene = new Scene("TestScene2", bg);
 		 	
 		window.init("Swingset Engine | testScene", 800, 600, false, scene);
     }
+
+	static void update() {
+		
+	}
 
 }

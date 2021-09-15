@@ -2,8 +2,12 @@ package xt.surge.swingset.components.canvas;
 
 import java.awt.Graphics;
 
+import org.w3c.dom.Element;
+
 import xt.surge.swingset.components.Node2D;
 import xt.surge.swingset.structs.Texture;
+import xt.surge.swingset.util.Constants;
+import xt.surge.swingset.resource.ImageLoader;
 
 /**
  * A Sprite is a render object that renders a texture. Sprites are useful in the sense that you
@@ -31,12 +35,26 @@ public class Sprite extends Node2D {
         scaley = 1;
     }
 
+    public Sprite(Texture texture, String name) {
+        super(name);
+        this.texture = texture;
+        scalex = 1;
+        scaley = 1;
+    }
+
     /**
      * Creates a new Sprite with the specified texture at x,y. By default, the image scaling
      * factor will be 1 (original size), but this can be changed through the <code>setScale</code> function.
      */
     public Sprite(float x, float y, Texture texture) {
         super(x, y);
+        this.texture = texture;
+        scalex = 1;
+        scaley = 1;
+    }
+
+    public Sprite(float x, float y, Texture texture, String name) {
+        super(x, y, name);
         this.texture = texture;
         scalex = 1;
         scaley = 1;
@@ -57,6 +75,38 @@ public class Sprite extends Node2D {
             g.drawImage(texture.getTexture(), xoffset + (int) this.transform.x, yoffset + (int) this.transform.y, (int)(scalex * texture.getSize().width), (int)(scaley * texture.getSize().height), null);
         }
         children.forEach(child -> child.render(g, xoffset, yoffset));
+    }
+
+    public static Sprite fromElement(Element elem) {
+        String texpath = elem.getAttribute("texture");
+        String x = elem.getAttribute("x");
+        String y = elem.getAttribute("y");
+        String sx = elem.getAttribute("sx");
+        String sy = elem.getAttribute("sy");
+
+        Texture tx;
+
+        Constants.RESLGR.log(texpath);
+
+        if(texpath.startsWith("res:")) { //load a resource from the sceneloader
+            //TODO
+            tx = ImageLoader.loadImage(texpath.substring(4));
+        } else {
+            tx = ImageLoader.loadImage(texpath);
+        }
+
+        float scalex = 1;
+        float scaley = 1;
+
+        Sprite spr = new Sprite(tx, elem.getAttribute("name"));
+        if(!x.isEmpty()) spr.transform.x = Float.parseFloat(x);
+        if(!y.isEmpty()) spr.transform.y = Float.parseFloat(y);
+        if(!sx.isEmpty()) scalex = Float.parseFloat(sx);
+        if(!sy.isEmpty()) scaley = Float.parseFloat(sy);
+
+        spr.setScale(scalex, scaley);
+
+        return spr;
     }
 
 }

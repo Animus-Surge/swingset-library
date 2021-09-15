@@ -26,4 +26,15 @@ public class Transform {
         this.y = y;
     }
 
+    /**
+     * Shifts the transform by the specified number of units
+     * 
+     * @param x How far left or right the shift should be
+     * @param y How far up or down the shift would be (Flipped, as in negative values go up and positive values go down)
+     */
+    public void shift(float x, float y) {
+        this.x += x;
+        this.y += y;
+    }
+
 }
