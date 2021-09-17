@@ -29,7 +29,7 @@ if not exist "%JPATH%" (
 :: Check if target is specified
 
 if [%1]==[] (
-    echo [31;1mERROR[0m: No target specified.
+    echo [31;1mERROR[0m: No target specified. Possible targets are: compile, javadoc, dist, all, clean, run, comprun
     exit /B 1
 )
 
@@ -39,7 +39,7 @@ if [%1]==[] (
 
 if "%1"=="list" (
     echo Possible targets:
-    echo compile, javadoc, dist, all, clean, run
+    echo compile, javadoc, dist, all, clean, run, comprun
     exit /B 0
 )
 
