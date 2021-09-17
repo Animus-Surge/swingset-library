@@ -34,18 +34,8 @@ public class Main {
 
 		Window window = new Window();
 
-		Node node = new Node("root");
-		node.script = new Script(node) {
-			@Override
-			public void start() {
-				Constants.MAINLGR.log(node.nodeName);
-				Constants.MAINLGR.log("Hello from start method!");
-			}
-			@Override
-			public void update() {
-
-			}
-		};
+		RectColor node = new RectColor("object");
+		node.script = new TestScript(node);
 
 		Scene scene = new Scene("testScene", node);
 		 	

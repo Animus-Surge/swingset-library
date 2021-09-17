@@ -16,10 +16,19 @@ import xt.surge.swingset.components.Node;
  * @author Surge
  * @version 1.0
  */
-public abstract class Script {
+public class Script {
     
-    public Script(Node node) {
+    /**The node the script is attached to */
+    public final Node node;
 
+    /**
+     * Creates a new script. It takes in the node that it will be attached to so the script modify its
+     * properties.
+     * 
+     * @param node The node that the script will be attached to
+     */
+    public Script(Node node) {
+        this.node = node;
     }
 
     /**

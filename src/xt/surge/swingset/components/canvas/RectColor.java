@@ -43,6 +43,7 @@ public class RectColor extends Rectangle {
 
         children.forEach(child -> child.render(g, gx, gy));
 
+        this.script.update();
     }
 
     public void setColor(Color color) {
