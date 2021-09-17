@@ -114,3 +114,7 @@ div.content {
 .footer{
     color: #1d3461;
 }
+
+.newsheader {
+    color: var(--color-9);
+}
