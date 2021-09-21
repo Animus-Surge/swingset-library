@@ -34,7 +34,7 @@ public class Main {
 
 		Window window = new Window();
 
-		RectColor node = new RectColor("object");
+		RectColor node = new RectColor(Color.blue);
 		node.script = new TestScript(node);
 
 		Scene scene = new Scene("testScene", node);
