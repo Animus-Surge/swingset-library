@@ -15,7 +15,7 @@ import xt.surge.swingset.resource.ImageLoader;
  * same time, and that you don't need to manually draw pixels and shapes (like in basic).
  * 
  * @author Surge
- * @version 1.0
+ * @version 1.1
  */
 public class Sprite extends Node2D {
     
@@ -35,6 +35,12 @@ public class Sprite extends Node2D {
         scaley = 1;
     }
 
+    /**
+     * Creates a new Sprite with the specified texture. Names the node with the specified name.
+     * 
+     * @param texture The texture the sprite will render.
+     * @param name The name of the node
+     */
     public Sprite(Texture texture, String name) {
         super(name);
         this.texture = texture;
@@ -45,6 +51,10 @@ public class Sprite extends Node2D {
     /**
      * Creates a new Sprite with the specified texture at x,y. By default, the image scaling
      * factor will be 1 (original size), but this can be changed through the <code>setScale</code> function.
+     * 
+     * @param x The x position of the node
+     * @param y The y position of the node
+     * @param texture The texture of the sprite
      */
     public Sprite(float x, float y, Texture texture) {
         super(x, y);
@@ -53,6 +63,15 @@ public class Sprite extends Node2D {
         scaley = 1;
     }
 
+    /**
+     * Creates a new Sprite with the specified texture at x,y and with the specified name. By default, the image scaling
+     * factor will be 1 (original size), but this can be changed through the <code>setScale</code> function.
+     * 
+     * @param x The x position of the node
+     * @param y The y position of the node
+     * @param texture The texture of the sprite
+     * @param name The name of the node
+     */
     public Sprite(float x, float y, Texture texture, String name) {
         super(x, y, name);
         this.texture = texture;
@@ -60,11 +79,24 @@ public class Sprite extends Node2D {
         scaley = 1;
     }
 
+    /**
+     * Sets the scaling factor of the sprite. Could also be called size. A value of 1 will
+     * render the texture at full size, so if a texture was 800x600 pixels, and the sprite's
+     * scaling factor was (1, 1), the texture will be rendered at 800x600 pixels.
+     * 
+     * @param x The x scaling factor
+     * @param y The y scaling factor
+     */
     public void setScale(float x, float y) {
         this.scalex = x;
         this.scaley = y;
     }
 
+    /**
+     * Sets the texture of the sprite.
+     * 
+     * @param texture The texture of the sprite
+     */
     public void setTexture(Texture texture) {
         this.texture = texture;
     }
@@ -77,6 +109,11 @@ public class Sprite extends Node2D {
         children.forEach(child -> child.render(g, xoffset, yoffset));
     }
 
+    /**
+     * Creates a new node based on the XML element provided
+     * 
+     * @param elem The XML element to convert to a node
+     */
     public static Sprite fromElement(Element elem) {
         String texpath = elem.getAttribute("texture");
         String x = elem.getAttribute("x");

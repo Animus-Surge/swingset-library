@@ -15,20 +15,33 @@ import xt.surge.swingset.components.Rectangle;
  */
 public class RectColor extends Rectangle {
 
+    /**
+     * The color of the node
+     */
     public Color color;
 
+    /**
+     * Creates a new RectColor. By default, <code>color</code> will be set to white.
+     */
     public RectColor() {
         super();
         this.color = Color.WHITE;
     }
 
+    /**
+     * Creates a new RectColor with the specified color.
+     * 
+     * @param color The color of the RectColor
+     */
     public RectColor(Color color) {
         super();
+        this.nodeName = "RectColor";
         this.color = color;
     }
 
     public RectColor(Color color, float x, float y, float w, float h) {
         super(x, y, w, h);
+        this.nodeName = "RectColor";
         this.color = color;
     }
 
@@ -46,10 +59,20 @@ public class RectColor extends Rectangle {
         this.script.update();
     }
 
+    /**
+     * Sets the color of the RectColor
+     * 
+     * @param color The color of the RectColor
+     */
     public void setColor(Color color) {
         this.color = color;
     }
 
+    /**
+     * Creates a new node based on the XML element provided
+     * 
+     * @param elem The XML element to convert to a node
+     */
     public static RectColor fromElement(Element elem) {
         RectColor n = new RectColor();
 
@@ -69,14 +92,16 @@ public class RectColor extends Rectangle {
         if(!sizeW.isEmpty()) n.setWidth(Integer.parseInt(sizeW));
         if(!sizeH.isEmpty()) n.setHeight(Integer.parseInt(sizeH));
 
-        if(!red.isEmpty() && !green.isEmpty() && !blue.isEmpty() && !alpha.isEmpty()) 
-            n.setColor(new Color(
-                        Integer.parseInt(red),
-                        Integer.parseInt(green),
-                        Integer.parseInt(blue),
-                        Integer.parseInt(alpha)
-            ));
+        int r = 0;
+        int g = 0;
+        int b = 0;
+        int a = 255;
+        if(!red.isEmpty()) r = Integer.parseInt(red);
+        if(!green.isEmpty()) g = Integer.parseInt(green);
+        if(!blue.isEmpty()) b = Integer.parseInt(blue);
+        if(!alpha.isEmpty()) a = Integer.parseInt(alpha);
 
+        n.setColor(new Color(r, g, b, a));
         return n;
     }
     

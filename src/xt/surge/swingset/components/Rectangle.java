@@ -47,6 +47,11 @@ public class Rectangle extends Node2D {
         this.height = height;
     }
 
+    /**
+     * Creates a new node based on the XML element provided
+     * 
+     * @param elem The XML element to convert to a node
+     */
     public static Rectangle fromElement(Element elem) {
         Rectangle n = new Rectangle();
 

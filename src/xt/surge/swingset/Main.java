@@ -1,17 +1,10 @@
 package xt.surge.swingset;
 
 import static xt.surge.swingset.util.Constants.*;
-import xt.surge.swingset.util.Constants;
 
 import xt.surge.swingset.renderer.Window;
-import xt.surge.swingset.resource.ImageLoader;
 import xt.surge.swingset.resource.Scene;
-import xt.surge.swingset.resource.SceneLoader;
-import xt.surge.swingset.scripting.Script;
-import xt.surge.swingset.structs.Texture;
-import xt.surge.swingset.components.canvas.RectColor;
-import xt.surge.swingset.components.canvas.Sprite;
-import xt.surge.swingset.components.Node;
+import xt.surge.swingset.components.canvas.*;
 
 import java.awt.Color;
 /**
@@ -23,6 +16,13 @@ import java.awt.Color;
  */
 public class Main {
 
+	/*
+	TODO: Rework ALL nodes' constructors to not require any parameters. Should
+	TODO only need to use helper methods to set all values to simplify code and make it
+	TODO more readable.
+
+	TODO JAVADOCS need to be created for all methods, and version should be updated to 1.1
+	*/
     
 	/**
 	 * Main method. Nothing major here.
@@ -34,7 +34,7 @@ public class Main {
 
 		Window window = new Window();
 
-		RectColor node = new RectColor(Color.blue);
+		RectColor node = new RectColor(Color.blue, 10, 10, 100, 100);
 		node.script = new TestScript(node);
 
 		Scene scene = new Scene("testScene", node);

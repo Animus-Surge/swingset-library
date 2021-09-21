@@ -58,11 +58,11 @@ public class Node2D extends Node {
 		this.transform.y = y;
 	}
 
-	/**
-	 * Creates a Node2D from an XML element.
-	 * 
-	 * @param elem The element to generate the Node2D from
-	 */
+    /**
+     * Creates a new node based on the XML element provided
+     * 
+     * @param elem The XML element to convert to a node
+     */
 	public static Node2D fromElement(Element elem) {
 		Node2D n = new Node2D();
 

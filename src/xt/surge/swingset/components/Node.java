@@ -99,6 +99,11 @@ public class Node implements Renderable {
         script.update();
     }
 
+    /**
+     * Creates a new node based on the XML element provided
+     * 
+     * @param elem The XML element to convert to a node
+     */
     public static Node fromElement(Element elem) {
         Node n = new Node();
 
