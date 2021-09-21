@@ -89,6 +89,23 @@ div.content {
     color: #1d3461;
 }
 
+.footer{
+    color: #1d3461;
+}
+
+.button{
+ background-color: var(--color-6);
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
 /*News panel*/
 
 .newstable {
@@ -99,7 +116,7 @@ div.content {
     justify-content: space-around;
     overflow-y:auto;
     overflow-x:hidden;
-    height: 200px;
+    height: 300px;
     width: 99.5%;
 }
 
@@ -111,10 +128,28 @@ div.content {
     overflow:hidden;
 }
 
-.footer{
-    color: #1d3461;
-}
 
 .newsheader {
     color: var(--color-9);
+}
+
+.newstext{
+  color: var(--color-9);
+}
+
+/* release table */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
 }
