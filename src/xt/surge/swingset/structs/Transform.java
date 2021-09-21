@@ -8,7 +8,7 @@ public class Transform {
     /**
      * The coordinates of the transform
      */
-    public float x, y;
+    public int x, y;
 
     /**
      * Creates a transform at the origin
@@ -21,7 +21,7 @@ public class Transform {
     /**
      * Creates a transform at the specified coordinates
      */
-    public Transform(float x, float y) {
+    public Transform(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -32,7 +32,7 @@ public class Transform {
      * @param x How far left or right the shift should be
      * @param y How far up or down the shift would be (Flipped, as in negative values go up and positive values go down)
      */
-    public void shift(float x, float y) {
+    public void shift(int x, int y) {
         this.x += x;
         this.y += y;
     }

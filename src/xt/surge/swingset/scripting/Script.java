@@ -1,6 +1,7 @@
 package xt.surge.swingset.scripting;
 
 import xt.surge.swingset.components.Node;
+import xt.surge.swingset.util.InputEvent;
 
 /**
  * A script is a special type of resource that is used for user defined functionality of
@@ -42,5 +43,7 @@ public class Script {
      * (like collisions or mouse hover checks) here.
      */
     public void update(){}
+
+    public void input(InputEvent event){}
 
 }

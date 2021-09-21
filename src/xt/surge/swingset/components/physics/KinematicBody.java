@@ -11,20 +11,7 @@ public class KinematicBody extends PhysicsBody {
         this.nodeName = "KinematicBody";
     }
 
-    public KinematicBody(String name) {
-        super(name);
-    }
-
-    public KinematicBody(float x, float y) {
-        super(x, y);
-        this.nodeName = "KinematicBody";
-    }
-
-    public KinematicBody(String name, float x, float y) {
-        super(name, x, y);
-    }
-
-    public void move(float x, float y) {
+    public void move(int x, int y) {
         this.transform.shift(x, y);
     }
 

@@ -26,23 +26,7 @@ public class RectColor extends Rectangle {
     public RectColor() {
         super();
         this.color = Color.WHITE;
-    }
-
-    /**
-     * Creates a new RectColor with the specified color.
-     * 
-     * @param color The color of the RectColor
-     */
-    public RectColor(Color color) {
-        super();
         this.nodeName = "RectColor";
-        this.color = color;
-    }
-
-    public RectColor(Color color, float x, float y, float w, float h) {
-        super(x, y, w, h);
-        this.nodeName = "RectColor";
-        this.color = color;
     }
 
     @Override

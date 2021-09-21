@@ -7,6 +7,9 @@ import org.w3c.dom.Element;
 
 import xt.surge.swingset.intfs.Renderable;
 import xt.surge.swingset.scripting.Script;
+import xt.surge.swingset.util.InputEvent;
+import xt.surge.swingset.util.Logger;
+import xt.surge.swingset.util.Constants;
 
 /**
  * The Node is the most basic component that is available to be used in scenes. By default, all
@@ -40,15 +43,6 @@ public class Node implements Renderable {
      */
     public Node() {
         this.nodeName = "Node";
-    }
-
-    /**
-     * Creates a node of specified type with the nodeName being specified
-     * 
-     * @param name The string in which to name the node
-     */
-    public Node(String name) {
-        this.nodeName = name;
     }
 
     public Script script;
@@ -90,13 +84,21 @@ public class Node implements Renderable {
      * Gets called once the scene is loaded
      */
     public final void onStart() { 
-        script.start();
+        if(script != null)
+            script.start();
+    }
+
+    public final void onInput(InputEvent event) {
+        Constants.MAINLGR.log("Input event recieved.", Logger.DEBUG);
+        if(script != null)
+            script.input(event);
     }
 
     @Override
     public void render(Graphics g, int xoffset, int yoffset) {
         children.forEach(child -> child.render(g, xoffset, yoffset));
-        script.update();
+        if(script != null)
+            script.update();
     }
 
     /**

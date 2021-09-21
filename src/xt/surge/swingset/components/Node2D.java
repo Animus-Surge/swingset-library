@@ -28,38 +28,25 @@ public class Node2D extends Node {
 	}
 
 	/**
-	 * Creates a new Node2D at the origin with the specified name.
+	 * Sets the X position of the node
+	 * 
+	 * @param x x
 	 */
-	public Node2D(String name) {
-		this.transform = new Transform();
-		this.nodeName = name;
-	}
-
-	/**
-	 * Creates a new Node2D at the specified coordinates
-	 */
-	public Node2D(float x, float y) {
-		this.transform = new Transform(x, y);
-	}
-
-	/**
-	 * Creates a new Node2D at the specified coordinates with the specified name
-	 */
-	public Node2D(float x, float y, String name) {
-		this.transform = new Transform(x, y);
-		this.nodeName = name;
-	}
-
 	public void setX(int x) {
 		this.transform.x = x;
 	}
 
+	/**
+	 * Sets the Y position of the node
+	 * 
+	 * @param y y
+	 */
 	public void setY(int y) {
 		this.transform.y = y;
 	}
 
     /**
-     * Creates a new node based on the XML element provided
+     * Creates a new Node2D based on the XML element provided
      * 
      * @param elem The XML element to convert to a node
      */

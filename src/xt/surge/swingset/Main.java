@@ -7,6 +7,7 @@ import xt.surge.swingset.resource.Scene;
 import xt.surge.swingset.components.canvas.*;
 
 import java.awt.Color;
+
 /**
  * This is a tester class used in testing the engine. This is not designed
  * to be included in release versions.
@@ -17,10 +18,6 @@ import java.awt.Color;
 public class Main {
 
 	/*
-	TODO: Rework ALL nodes' constructors to not require any parameters. Should
-	TODO only need to use helper methods to set all values to simplify code and make it
-	TODO more readable.
-
 	TODO JAVADOCS need to be created for all methods, and version should be updated to 1.1
 	*/
     
@@ -34,7 +31,12 @@ public class Main {
 
 		Window window = new Window();
 
-		RectColor node = new RectColor(Color.blue, 10, 10, 100, 100);
+		RectColor node = new RectColor();
+		node.setX(100);
+		node.setY(100);
+		node.setWidth(200);
+		node.setHeight(200);
+		node.setColor(Color.blue);
 		node.script = new TestScript(node);
 
 		Scene scene = new Scene("testScene", node);

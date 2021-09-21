@@ -25,56 +25,10 @@ public class Sprite extends Node2D {
     /**
      * Creates a new Sprite with the specified texture. By default, the position will be at 0, 0 with
      * an image scaling factor of 1 (original size).
-     * 
-     * @param texture The texture the sprite will render. If null, the sprite will not render anything and simply render its children.
      */
-    public Sprite(Texture texture) {
+    public Sprite() {
         super();
-        this.texture = texture;
-        scalex = 1;
-        scaley = 1;
-    }
-
-    /**
-     * Creates a new Sprite with the specified texture. Names the node with the specified name.
-     * 
-     * @param texture The texture the sprite will render.
-     * @param name The name of the node
-     */
-    public Sprite(Texture texture, String name) {
-        super(name);
-        this.texture = texture;
-        scalex = 1;
-        scaley = 1;
-    }
-
-    /**
-     * Creates a new Sprite with the specified texture at x,y. By default, the image scaling
-     * factor will be 1 (original size), but this can be changed through the <code>setScale</code> function.
-     * 
-     * @param x The x position of the node
-     * @param y The y position of the node
-     * @param texture The texture of the sprite
-     */
-    public Sprite(float x, float y, Texture texture) {
-        super(x, y);
-        this.texture = texture;
-        scalex = 1;
-        scaley = 1;
-    }
-
-    /**
-     * Creates a new Sprite with the specified texture at x,y and with the specified name. By default, the image scaling
-     * factor will be 1 (original size), but this can be changed through the <code>setScale</code> function.
-     * 
-     * @param x The x position of the node
-     * @param y The y position of the node
-     * @param texture The texture of the sprite
-     * @param name The name of the node
-     */
-    public Sprite(float x, float y, Texture texture, String name) {
-        super(x, y, name);
-        this.texture = texture;
+        this.nodeName = "Sprite";
         scalex = 1;
         scaley = 1;
     }
@@ -135,9 +89,11 @@ public class Sprite extends Node2D {
         float scalex = 1;
         float scaley = 1;
 
-        Sprite spr = new Sprite(tx, elem.getAttribute("name"));
-        if(!x.isEmpty()) spr.transform.x = Float.parseFloat(x);
-        if(!y.isEmpty()) spr.transform.y = Float.parseFloat(y);
+        Sprite spr = new Sprite();
+        spr.setTexture(tx);
+        spr.setName(elem.getAttribute("name"));
+        if(!x.isEmpty()) spr.transform.x = Integer.parseInt(x);
+        if(!y.isEmpty()) spr.transform.y = Integer.parseInt(y);
         if(!sx.isEmpty()) scalex = Float.parseFloat(sx);
         if(!sy.isEmpty()) scaley = Float.parseFloat(sy);
 
