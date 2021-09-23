@@ -2,7 +2,7 @@
 
 The `build.bat`/`build.sh` files are there to enable you to be able to build the project more easily. They're basically like a custom version of Make, but written specifically for this project.
 
-**IMPORTANT: There *MUST* be a java folder in the project directory that contains a JDK, otherwise none of the steps below will work.** To get the JDK, go to java.oracle.com and find the latest JDK download. Be sure to find the compressed archive download for your system. Once downloaded, extract into the java folder. Make sure that there are no extra subfolders in there. The directory tree should look something like this:
+There must be a project JDK present in a folder named java (see directory tree below), *or* a JDK must be defined in the PATH variable. The buildscript (`build.bat`) checks on run to see if there is a JDK defined in the PATH variable, and if not it will check if there is a JDK in the project, and if not it will error and terminate.
 
 ```
 .

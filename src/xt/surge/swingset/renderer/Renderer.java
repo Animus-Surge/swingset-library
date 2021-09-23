@@ -8,6 +8,14 @@ import java.awt.*;
 
 public class Renderer extends JPanel {
 
+    static Renderer instance;
+    public static Renderer get() {
+        if(instance == null) {
+            instance = new Renderer();
+        }
+        return instance;
+    }
+
     public Scene currentScene;
     
     public Renderer() {

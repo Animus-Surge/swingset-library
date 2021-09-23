@@ -3,6 +3,7 @@ package xt.surge.swingset.renderer;
 import java.awt.*;
 import javax.swing.*;
 
+import xt.surge.swingset.renderer.events.KeyEvent;
 import xt.surge.swingset.resource.Scene;
 
 public class Window {
@@ -21,12 +22,13 @@ public class Window {
 
         frame.setLocationRelativeTo(null);
 
-        renderPanel = new Renderer();
+        renderPanel = Renderer.get();
         renderPanel.currentScene = scene;
         renderPanel.setSize(width, height);
 
+        frame.addKeyListener(KeyEvent.get());
+
         frame.add(renderPanel);
-        //frame.pack();
 
         frame.setVisible(true);
 

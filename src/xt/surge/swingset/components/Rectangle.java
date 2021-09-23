@@ -13,40 +13,44 @@ import org.w3c.dom.Element;
  */
 public class Rectangle extends Node2D {
 
+    /**
+     * Width and height values
+     */
     public float width, height;
 
+    /**
+     * Creates a new Rectangle
+     */
     public Rectangle() {
         super();
+        this.nodeName = "Rectangle";
         width = 0;
         height = 0;
     }
 
-    public Rectangle(float x, float y, float width, float height) {
-        super(x, y);
-        this.width = width;
-        this.height = height;
-    }
-
-    public Rectangle(String name) {
-        super(name);
-        width = 0;
-        width = 0;
-    }
-
-    public Rectangle(float x, float y, float width, float height, String name) {
-        super(x, y, name);
-        this.width = width;
-        this.height = height;
-    }
-
+    /**
+     * Sets the width of the Rectangle
+     * 
+     * @param width new width
+     */
     public void setWidth(int width) {
         this.width = width;
     }
 
+    /**
+     * Sets the height of the rectangle
+     * 
+     * @param height new height
+     */
     public void setHeight(int height) {
         this.height = height;
     }
 
+    /**
+     * Creates a new Rectangle based on the XML element provided
+     * 
+     * @param elem The XML element to convert to a node
+     */
     public static Rectangle fromElement(Element elem) {
         Rectangle n = new Rectangle();
 
