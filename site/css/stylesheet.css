@@ -153,3 +153,26 @@ td, th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
+
+/*documentation page*/
+.row{
+
+}
+.column {
+  box-sizing: border-box; 
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
+
+p.description {
+  text-align: center;
+}
+
+.vl {
+  border-left: 1px solid white;
+  height: 260px;
+  position: absolute;
+  left: 50%;
+  margin-left: -3px;
+}
