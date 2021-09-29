@@ -22,13 +22,17 @@ public class Renderer extends JPanel {
 
     }
 
-    public Renderer(Scene scene) {
-        this.currentScene = scene;
+    public void start() {
+        currentScene.rootNode.onStart();
     }
 
     @Override
     public void paintComponent(Graphics g) {
+        super.paintComponent(g);
         currentScene.render(g);
+        repaint();
     }
+
+    //TODO: Render thread and physics threads
 
 }

@@ -5,6 +5,7 @@ import static xt.surge.swingset.util.Constants.*;
 import xt.surge.swingset.renderer.Window;
 import xt.surge.swingset.resource.Scene;
 import xt.surge.swingset.components.canvas.*;
+import xt.surge.swingset.components.ui.UIPanel;
 
 import java.awt.Color;
 
@@ -13,12 +14,14 @@ import java.awt.Color;
  * to be included in release versions.
  * 
  * @author Surge
- * @version 1.0
+ * @version 1.1
+ * @since 1.0
  */
 public class Main {
 
 	/*
 	TODO JAVADOCS need to be created for all methods, and version should be updated to 1.1
+	Also add @since 1.0 tag
 	*/
     
 	/**
@@ -31,21 +34,19 @@ public class Main {
 
 		Window window = new Window();
 
-		RectColor node = new RectColor();
-		node.setX(100);
-		node.setY(100);
-		node.setWidth(200);
-		node.setHeight(200);
-		node.setColor(Color.blue);
-		node.script = new TestScript(node);
-
-		Scene scene = new Scene("testScene", node);
+		RectColor background = new RectColor();
+		background.setColor(Color.black);
+		background.setWidth(800);
+		background.setHeight(600);
+		//*
+		UIPanel panel = new UIPanel();
+		panel.setPosition(100, 100);
+		panel.setSize(100, 100);
+		background.addChild(panel); //TODO: add a specific rendering and input layer for the UI
+		//*/
+		Scene scene = new Scene("testScene", background);
 		 	
 		window.init("Swingset Engine | testScene", 800, 600, false, scene);
     }
-
-	static void update() {
-		
-	}
 
 }

@@ -1,6 +1,7 @@
 package xt.surge.swingset.components;
 
 import org.w3c.dom.Element;
+import java.awt.Graphics;
 
 import xt.surge.swingset.structs.Transform;
 
@@ -43,6 +44,13 @@ public class Node2D extends Node {
 	 */
 	public void setY(int y) {
 		this.transform.y = y;
+	}
+
+	@Override
+	public void render(Graphics g, int xoffset, int yoffset) {
+		int xo = xoffset + this.transform.x;
+		int yo = yoffset + this.transform.y;
+		super.render(g, xo, yo);
 	}
 
     /**

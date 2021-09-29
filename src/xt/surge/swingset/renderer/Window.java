@@ -31,8 +31,11 @@ public class Window {
         frame.add(renderPanel);
 
         frame.setVisible(true);
+        renderPanel.start();
 
-        //Start the render loop
+        while(true) {
+            renderPanel.repaint(); //TODO: make this not an infinite loop
+        }
         //Start audio machine
 
     }

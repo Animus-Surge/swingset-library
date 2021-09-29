@@ -17,7 +17,7 @@ import java.awt.Point;
  */
 public class Collider extends Rectangle {
     
-    public boolean isTrigger = false, isColliding = false;
+    public boolean isTrigger = false;
 
     public Collider() {
         super();

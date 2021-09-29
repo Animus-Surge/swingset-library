@@ -7,9 +7,6 @@ import org.w3c.dom.Element;
 
 import xt.surge.swingset.intfs.Renderable;
 import xt.surge.swingset.scripting.Script;
-import xt.surge.swingset.util.InputEvent;
-import xt.surge.swingset.util.Logger;
-import xt.surge.swingset.util.Constants;
 
 /**
  * The Node is the most basic component that is available to be used in scenes. By default, all
@@ -20,6 +17,9 @@ import xt.surge.swingset.util.Constants;
  * @version 1.0
  */
 public class Node implements Renderable {
+
+    /**Whether or not the Node is visible */
+    public boolean visible = true; //True by default
 
     /**
      * The list of children the node has
@@ -83,15 +83,16 @@ public class Node implements Renderable {
     /**
      * Gets called once the scene is loaded
      */
-    public final void onStart() { 
+    public void onStart() { 
+        children.forEach(child -> child.onStart());
         if(script != null)
             script.start();
     }
 
-    public final void onInput(InputEvent event) {
-        Constants.MAINLGR.log("Input event recieved.", Logger.DEBUG);
-        if(script != null)
-            script.input(event);
+    public void onUpdate() {
+        children.forEach(child -> child.onUpdate());
+        if(script != null) //Maybe unneccessary
+            script.update();
     }
 
     @Override
@@ -100,6 +101,8 @@ public class Node implements Renderable {
         if(script != null)
             script.update();
     }
+
+    //TODO: physics update method
 
     /**
      * Creates a new node based on the XML element provided

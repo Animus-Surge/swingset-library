@@ -69,6 +69,7 @@ goto error
 
 ::Creates a distributable binary
 :builddist
+echo WORK IN PROGRESS
 
 ::Runs the compiled application
 :run
@@ -82,15 +83,43 @@ goto success
 
 ::Cleans all output files
 :clean
+echo Cleaning output directories...
+del /S /F /D docs
+del /S /F /D out
+
 
 ::Constructs documentation from all javadocs in the project
 :javadoc
+echo WORK IN PROGRESS
 
 ::Compiles the project, and then runs the project if the compilation was successful
 :compileandrun
 
+echo Compiling project...
+cd src
+javac -d ../out xt/surge/swingset/Main.java
+if not %ERRORLEVEL%==0 (
+    set EMSG=Compilation failed. See log output for more information.
+    goto error
+)
+echo Compilation successful.
+cd ../out
+java xt.surge.swingset.Main
+if %ERRORLEVEL%==9009 (
+    set EMSG=Unforseeable error has occured. 'java' is not a command.
+    goto error
+)
+goto success
+
 ::Compiles the project, creates a distributable binary, and constructs javadocs
 :all
+echo Compiling project...
+cd src
+javac -d ../out xt/surge/swingset/Main.java
+if not %ERRORLEVEL%==0 (
+    set EMSG=Compilation failed. See log output for more information.
+    goto error
+)
 
 :success
 echo [92;1mSUCCESS[0m: Target "%1" succeeded.

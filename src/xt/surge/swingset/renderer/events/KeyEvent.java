@@ -2,9 +2,7 @@ package xt.surge.swingset.renderer.events;
 
 import java.awt.event.KeyListener;
 
-import xt.surge.swingset.renderer.Renderer;
-
-import xt.surge.swingset.util.InputEvent;
+import xt.surge.swingset.util.InputManager;
 
 public class KeyEvent implements KeyListener {
 
@@ -23,14 +21,12 @@ public class KeyEvent implements KeyListener {
 
     @Override
     public void keyPressed(java.awt.event.KeyEvent e) {
-        InputEvent event = new InputEvent(InputEvent.EventType.IE_KEY, e.getKeyCode(), true);
-        Renderer.get().currentScene.rootNode.onInput(event);
+        InputManager.keyPress(e.getKeyCode());
     }
 
     @Override
     public void keyReleased(java.awt.event.KeyEvent e) {
-        InputEvent event = new InputEvent(InputEvent.EventType.IE_KEY, e.getKeyCode(), true);
-        Renderer.get().currentScene.rootNode.onInput(event);
+        InputManager.keyRelease(e.getKeyCode());
     }
     
 }

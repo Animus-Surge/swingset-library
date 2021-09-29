@@ -11,7 +11,8 @@ import xt.surge.swingset.components.Rectangle;
  * All it is is a solid color that fills a section of the screen. Simple, right?
  * 
  * @author Surge
- * @version 1.0
+ * @version 1.1
+ * @since 1.0
  */
 public class RectColor extends Rectangle {
 
@@ -38,9 +39,7 @@ public class RectColor extends Rectangle {
 
         g.fillRect(gx, gy, (int)width, (int)height);
 
-        children.forEach(child -> child.render(g, gx, gy));
-
-        this.script.update();
+        super.render(g, xoffset, yoffset);
     }
 
     /**
@@ -50,6 +49,7 @@ public class RectColor extends Rectangle {
      */
     public void setColor(Color color) {
         this.color = color;
+        xt.surge.swingset.util.Constants.MAINLGR.log("Set the color of " + this.nodeName, xt.surge.swingset.util.Logger.DEBUG);
     }
 
     /**
