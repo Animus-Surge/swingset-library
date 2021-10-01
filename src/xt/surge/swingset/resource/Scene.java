@@ -21,6 +21,10 @@ public class Scene {
      */
     public final String name;
     /**
+     * The path where the scene is saved
+     */
+    public final String path;
+    /**
      * The root node of the scene
      */
     public Node rootNode;
@@ -31,9 +35,10 @@ public class Scene {
      * @param name The scene name
      * @param root The root node of the scene
      */
-    public Scene(String name, Node root) {
+    public Scene(String name, String scenePath, Node root) {
         this.name = name;
         this.rootNode = root;
+        this.path = scenePath;
         root.onStart();
     }
 

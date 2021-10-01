@@ -77,7 +77,7 @@ public class SceneLoader {
                         }
                         checkChildren(root, elem);
 
-                        return new Scene(sceneroot.getAttribute("name"), root);
+                        return new Scene(sceneroot.getAttribute("name"), path, root);
                     }
                 }
             }

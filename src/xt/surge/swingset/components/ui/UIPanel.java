@@ -31,11 +31,13 @@ public class UIPanel extends UIElement {
 
     @Override
     public void render(Graphics g, int xoffset, int yoffset) {
+        int xo = x + xoffset;
+        int yo = y + yoffset;
         g.setColor(bgColor);
-        g.fillRect(x, y, width, height);
+        g.fillRect(xo, yo, width, height);
         g.setColor(borderColor);
-        g.drawRect(x, y, width, height);
+        g.drawRect(xo, yo, width, height);
 
-        super.render(g, xoffset, yoffset);
+        super.render(g, xo, yo);
     }
 }

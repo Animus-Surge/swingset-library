@@ -5,6 +5,7 @@ import static xt.surge.swingset.util.Constants.*;
 import xt.surge.swingset.renderer.Window;
 import xt.surge.swingset.resource.Scene;
 import xt.surge.swingset.components.canvas.*;
+import xt.surge.swingset.components.ui.UILabel;
 import xt.surge.swingset.components.ui.UIPanel;
 
 import java.awt.Color;
@@ -42,9 +43,19 @@ public class Main {
 		UIPanel panel = new UIPanel();
 		panel.setPosition(100, 100);
 		panel.setSize(100, 100);
+
+		panel.setBorderColor(Color.red);
+		panel.setBackgroundColor(new Color(255, 0, 0, 64));
+
+		UILabel label = new UILabel();
+		label.setText("Hello!");
+		label.setPosition(5, 15);
+		label.setColor(Color.blue);
+		panel.addChild(label);
+
 		background.addChild(panel); //TODO: add a specific rendering and input layer for the UI
 		//*/
-		Scene scene = new Scene("testScene", background);
+		Scene scene = new Scene("testScene", "local", background);
 		 	
 		window.init("Swingset Engine | testScene", 800, 600, false, scene);
     }
