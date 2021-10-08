@@ -2,7 +2,7 @@ package xt.surge.swingset.resource;
 
 import java.awt.Graphics;
 
-import xt.surge.swingset.components.Node;
+import xt.surge.swingset.components.Node2D;
 
 /**
  * A scene is a group of nodes that collectively form a part of a game. For example,
@@ -27,7 +27,7 @@ public class Scene {
     /**
      * The root node of the scene
      */
-    public Node rootNode;
+    public Node2D rootNode;
 
     /**
      * Creates a new scene with the specified name and root node.
@@ -35,7 +35,7 @@ public class Scene {
      * @param name The scene name
      * @param root The root node of the scene
      */
-    public Scene(String name, String scenePath, Node root) {
+    public Scene(String name, String scenePath, Node2D root) {
         this.name = name;
         this.rootNode = root;
         this.path = scenePath;

@@ -11,6 +11,7 @@ public class UIPanel extends UIElement {
     public Color borderColor = Color.white;
 
     public UIPanel() {
+        super();
         width = 0;
         height = 0;
         this.nodeName = "UIPanel";
@@ -29,15 +30,5 @@ public class UIPanel extends UIElement {
         this.borderColor = color;
     }
 
-    @Override
-    public void render(Graphics g, int xoffset, int yoffset) {
-        int xo = x + xoffset;
-        int yo = y + yoffset;
-        g.setColor(bgColor);
-        g.fillRect(xo, yo, width, height);
-        g.setColor(borderColor);
-        g.drawRect(xo, yo, width, height);
-
-        super.render(g, xo, yo);
-    }
+    
 }
