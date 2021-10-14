@@ -1,6 +1,6 @@
 package xt.surge.swingset.scripting;
 
-import xt.surge.swingset.components.Node;
+import xt.surge.swingset.components.Node2D;
 
 /**
  * A script is a special type of resource that is used for user defined functionality of
@@ -19,7 +19,7 @@ import xt.surge.swingset.components.Node;
 public class Script {
     
     /**The node the script is attached to */
-    public final Node node;
+    public final Node2D node;
 
     /**
      * Creates a new script. It takes in the node that it will be attached to so the script modify its
@@ -27,7 +27,7 @@ public class Script {
      * 
      * @param node The node that the script will be attached to
      */
-    public Script(Node node) {
+    public Script(Node2D node) {
         this.node = node;
     }
 

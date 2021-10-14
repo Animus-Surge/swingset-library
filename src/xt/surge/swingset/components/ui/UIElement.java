@@ -1,10 +1,10 @@
 package xt.surge.swingset.components.ui;
 
-import xt.surge.swingset.components.Node;
+import xt.surge.swingset.components.Node2D;
 
 import org.w3c.dom.Element;
 
-public class UIElement extends Node {
+public class UIElement extends Node2D {
     
     public int x, y;
 

@@ -2,7 +2,9 @@ package xt.surge.swingset.components;
 
 import org.w3c.dom.Element;
 import java.awt.Graphics;
+import java.util.ArrayList;
 
+import xt.surge.swingset.intfs.Renderable;
 import xt.surge.swingset.structs.Transform;
 
 /**
@@ -13,12 +15,18 @@ import xt.surge.swingset.structs.Transform;
  * @author Surge
  * @version 1.0
  */
-public class Node2D extends Node {
+public class Node2D implements Renderable {
+
+	public ArrayList<Node2D> children = new ArrayList<>();
 
 	/**
 	 * The transform object of the node
 	 */
 	public Transform transform;
+
+	public int gx, gy;
+
+	public String nodeName;
 
 	/**
 	 * Creates a new Node2D at the origin.
@@ -46,11 +54,30 @@ public class Node2D extends Node {
 		this.transform.y = y;
 	}
 
+	public void setGlobals(int xo, int yo) {
+		gx = transform.x + xo;
+		gy = transform.y + yo;
+	}
+
 	@Override
 	public void render(Graphics g, int xoffset, int yoffset) {
-		int xo = xoffset + this.transform.x;
-		int yo = yoffset + this.transform.y;
-		super.render(g, xo, yo);
+		setGlobals(xoffset, yoffset);
+		drawChildren(g);
+	}
+
+	public void drawChildren(Graphics g) {
+		children.forEach(child -> child.render(g, gx, gy));
+	}
+
+	public void setName(String newName) {
+		nodeName = newName;
+	}
+
+	public void onStart() { //TODO
+	}
+
+	public void addChild(Node2D child) {
+		children.add(child);
 	}
 
     /**

@@ -41,7 +41,7 @@ public class SceneLoader {
 
             Element sceneroot = sceneDoc.getDocumentElement();
             if(sceneroot.getNodeName().equals("scene")) {
-                xt.surge.swingset.components.Node root = new xt.surge.swingset.components.Node();
+                Node2D root = new Node2D();
                 for(int i = 0; i < sceneroot.getChildNodes().getLength(); i++) {
                     org.w3c.dom.Node node = sceneroot.getChildNodes().item(i);
 
@@ -50,22 +50,16 @@ public class SceneLoader {
                     }
                     else if (node.getNodeName().equals("node") && node.getNodeType() == 1) {
                         Element elem = (Element) node;
-                        root = new xt.surge.swingset.components.Node();
+                        root = new Node2D();
                         switch(elem.getAttribute("class")) {
-                            case "Node":
-                                root = xt.surge.swingset.components.Node.fromElement(elem);
-                                break;
                             case "Node2D":
                                 root = Node2D.fromElement(elem);
                                 break;
                             case "Rectangle":
-                                root = Rectangle.fromElement(elem);
                                 break;
                             case "RectColor":
-                                root = RectColor.fromElement(elem);
                                 break;
                             case "Sprite":
-                                root = Sprite.fromElement(elem);
                                 break;
                             case "PhysicsBody":
                                 break;
@@ -87,30 +81,24 @@ public class SceneLoader {
         return null; //TODO: make it return the current scene of the game
     }
 
-    public static void checkChildren(xt.surge.swingset.components.Node root, Element elem) {
+    public static void checkChildren(Node2D root, Element elem) {
         NodeList children = elem.getChildNodes();
         for(int i = 0; i < children.getLength(); i++) {
             org.w3c.dom.Node child = children.item(i);
 
             if(child.getNodeName().equals("node") && child.getNodeType() == 1) {
                 Element e = (Element) child;
-                xt.surge.swingset.components.Node node = new xt.surge.swingset.components.Node();
+                Node2D node = new Node2D();
 
                 switch(e.getAttribute("class")) {
-                    case "Node":
-                        node = xt.surge.swingset.components.Node.fromElement(e);
-                        break;
                     case "Node2D":
                         node = Node2D.fromElement(e);
                         break;
                     case "Rectangle":
-                        node = Rectangle.fromElement(e);
                         break;
                     case "RectColor":
-                        node = RectColor.fromElement(e);
                         break;
                     case "Sprite":
-                        node = Sprite.fromElement(e);
                         break;
                     case "PhysicsBody":
                         break;
