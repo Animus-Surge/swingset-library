@@ -1,49 +1,48 @@
 package xt.surge.swingset.scripting;
 
-import xt.surge.swingset.components.Node2D;
+import xt.surge.swingset.nodesys.Node;
 
 /**
- * A script is a special type of resource that is used for user defined functionality of
- * a node or likewise. Scripts are written in Java and are essentially classes that derive this
- * interface or classes that derive this interface.
+ * A script is a class that gets instantiated whenever a node
+ * needs to have custom functonality. This can either be builtin
+ * functionality or user-defined functionality.
  * 
- * Extra scripting interfaces are defined in the {@link xt.surge.swingset.scripting} package, incuding
- * interfaces that allow scripts to use physics and user input, such as a KinematicBody.
- * 
- * This interface is the base interface that includes definitions for the <code>start</code> and
- * <code>update</code> functions.
- * 
- * @author Surge
- * @version 1.0
+ * @since 1.1
+ * @version 1.1
  */
-public class Script {
+public abstract class Script {
     
-    /**The node the script is attached to */
-    public final Node2D node;
+    /**
+     * Represents the node that the script is attached to
+     */
+    public Node node;
 
     /**
-     * Creates a new script. It takes in the node that it will be attached to so the script modify its
-     * properties.
+     * Creates a new Script that is attached to the specified node.
      * 
-     * @param node The node that the script will be attached to
+     * TODO: make it so scripts can be attached to multiple nodes using a builtin final call function
+     * 
+     * @param node The node the script is attached to
      */
-    public Script(Node2D node) {
+    public Script(Node node) {
         this.node = node;
     }
 
     /**
-     * This is the starting point of everything! On scene load, each node with a script attached will
-     * get this function called. This function will only be called <i>once</i>.
+     * Called when the script is first initialized
      */
-    public void start(){}
-
+    public void start() {}
     /**
-     * The update function gets called on each frame. Put things that need to be checked each frame
-     * (like collisions or mouse hover checks) here.
+     * Called every frame
      */
-    public void update(){}
-
-    //Maybe: create input method to handle direct inputs targeted at this script, otherwise
-    //use update() function
+    public void update() {}
+    /**
+     * Called at a specific interval, used for physics
+     */
+    public void physics() {}
+    /**
+     * Called every time an input action occurs
+     */
+    public void input() {}
 
 }
