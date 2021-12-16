@@ -3,7 +3,6 @@ package xt.surge.swingset.renderer;
 import javax.swing.JPanel;
 
 import xt.surge.swingset.resource.Scene;
-import xt.surge.swingset.resource.SceneLoader;
 import xt.surge.swingset.util.Constants;
 import xt.surge.swingset.util.Logger;
 
@@ -40,8 +39,8 @@ public class Renderer extends JPanel {
         if(currentScene.path.equals("local")) {
             Constants.MAINLGR.log("Cannot reload a hardcoded scene", Logger.ERROR);
         } else {
-            String path = currentScene.path;
-            currentScene = SceneLoader.loadScene(path);
+            //String path = currentScene.path;
+            //TODO: scene loader V2
         }
     }
 

@@ -3,12 +3,13 @@ package xt.surge.swingset;
 import static xt.surge.swingset.util.Constants.*;
 
 import xt.surge.swingset.renderer.Window;
+import xt.surge.swingset.resource.ImageLoader;
 import xt.surge.swingset.resource.Scene;
-import xt.surge.swingset.components.canvas.*;
-import xt.surge.swingset.components.ui.UILabel;
-import xt.surge.swingset.components.ui.UIPanel;
 
-import java.awt.Color;
+import xt.surge.swingset.nodesys.Node;
+import xt.surge.swingset.nodesys.Sprite;
+
+import java.awt.*;
 
 /**
  * This is a tester class used in testing the engine. This is not designed
@@ -35,28 +36,12 @@ public class Main {
 
 		Window window = new Window();
 
-		RectColor background = new RectColor();
-		background.setColor(Color.black);
-		background.setWidth(800);
-		background.setHeight(600);
-		//*
-		UIPanel panel = new UIPanel();
-		panel.setPosition(100, 100);
-		panel.setSize(100, 100);
+		Sprite sprite = new Sprite();
+		sprite.setTexture(ImageLoader.loadImage("../res/textures/tex1.png"));
+		sprite.transform.position = new Point(10, 10);
+		sprite.transform.resize(0.5, 0.5);
 
-		panel.setBorderColor(Color.red);
-		panel.setBackgroundColor(new Color(255, 0, 0, 64));
-
-		UILabel label = new UILabel();
-		label.setText("Hello!");
-		label.setPosition(5, 15);
-		label.setColor(Color.blue);
-		panel.addChild(label);
-
-		background.addChild(panel); //TODO: add a specific rendering and input layer for the UI
-		//*/
-		Scene scene = new Scene("testScene", "local", background);
-		 	
+		Scene scene = new Scene("testScene", "local", sprite);
 		window.init("Swingset Engine | testScene", 800, 600, false, scene);
     }
 
